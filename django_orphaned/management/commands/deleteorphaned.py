@@ -81,23 +81,24 @@ class Command(BaseCommand):
                 # to be fried
                 for df in delete_files:
                     total_freed_bytes += os.path.getsize(df)
-                total_freed = "%0.1f MB" % (total_freed_bytes/(1024*1024.0))
+                total_freed = "%0.2f MB" % (total_freed_bytes/(1024*1024.0))
 
                 # only show
+                print app, ":"
                 if (self.only_info):
                     if (len(delete_files)>0):
-                        print "\r\nFollowing files will be deleted:\r\n"
+                        print "Following files will be deleted:\r\n"
                         for file in delete_files:
                             print " ",file
                     if (len(empty_dirs)>0):
-                        print "\r\nFollowing empty dirs will be removed:\r\n"
+                        print "Following empty dirs will be removed:\r\n"
                         for file in empty_dirs:
                             print " ",file
 
                     if (len(delete_files)>0):
-                        print "\r\nTotally %s files will be deleted, and totally %s will be freed\r\n" % (len(delete_files), total_freed)
+                        print "Totally %s files will be deleted, and totally %s will be freed\r\n" % (len(delete_files), total_freed)
                     else:
-                        print "No files to delete!"
+                        print "No files to delete found"
                 # DELETE NOW!
                 else:
                     for file in delete_files:
