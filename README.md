@@ -21,7 +21,7 @@ now add this to your settings.py ('app' is your project name where models.py is 
 
     ORPHANED_APPS_MEDIABASE_DIRS = {
         'app': {
-            'root': MEDIABASE_ROOT,  # MEDIABASE_ROOT => default location of your uploaded items e.g. /var/www/mediabase
+            'root': [MEDIABASE_ROOT, MEDIABASE_ROOT2],  # MEDIABASE_ROOTn => default locations of your uploaded items e.g. /var/www/mediabase
             'skip': (               # optional iterable of subfolders to preserve, e.g. sorl.thumbnail cache
                 path.join(MEDIABASE_ROOT, 'cache'),
                 path.join(MEDIABASE_ROOT, 'foobar'),
