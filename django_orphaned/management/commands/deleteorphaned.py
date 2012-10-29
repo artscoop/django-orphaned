@@ -50,15 +50,16 @@ class Command(BaseCommand):
                             return True
                     return False
 
-                for root, dirs, files in os.walk(ORPHANED_APPS_MEDIABASE_DIRS[app]['root']):
-                    if should_skip(root):
-                        continue
-                    if (len(files)>0):
-                        for basename in files:
-                            all_files.append(os.path.join(root, basename))
-                    else:
-                        if (root != ORPHANED_APPS_MEDIABASE_DIRS[app]['root']) and ((root+'/') != ORPHANED_APPS_MEDIABASE_DIRS[app]['root']):
-                            possible_empty_dirs.append(root)
+                for rootdir in ORPHANED_APPS_MEDIABASE_DIRS[app]['root']:
+                    for root, dirs, files in os.walk(rootdir):
+                        if should_skip(root):
+                            continue
+                        if (len(files)>0):
+                            for basename in files:
+                                all_files.append(os.path.join(root, basename))
+                        else:
+                            if (root != rootdir) and ((root+'/') != rootdir):
+                                possible_empty_dirs.append(root)
 
                 # ignore empty dirs with subdirs + files
                 for ed in possible_empty_dirs:
