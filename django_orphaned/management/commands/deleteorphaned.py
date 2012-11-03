@@ -87,9 +87,9 @@ class Command(BaseCommand):
                 # only show
                 if (self.only_info):
                     if (len(delete_files)>0):
-                        print "Following files will be deleted:", ", ".join([file for file in delete_files]
+                        print "Following files will be deleted:", ", ".join([file for file in delete_files])
                     if (len(empty_dirs)>0):
-                        print "Following empty dirs will be removed:", ", ".join([file for file in empty_dirs]
+                        print "Following empty dirs will be removed:", ", ".join([file for file in empty_dirs])
                     if (len(delete_files)>0):
                         print "Totally %s files will be deleted, and %s will be freed" % (len(delete_files), total_freed)
                     else:
