@@ -85,23 +85,15 @@ class Command(BaseCommand):
                 total_freed = "%0.2f MB" % (total_freed_bytes/(1024*1024.0))
 
                 # only show
-                print "=" * 80
-                print app, ":"
-                print "=" * 80
                 if (self.only_info):
                     if (len(delete_files)>0):
-                        print "Following files will be deleted:"
-                        for file in delete_files:
-                            print " - ",file
+                        print "Following files will be deleted:", ", ".join([file for file in delete_files]
                     if (len(empty_dirs)>0):
-                        print "Following empty dirs will be removed:"
-                        for file in empty_dirs:
-                            print " ",file
-
+                        print "Following empty dirs will be removed:", ", ".join([file for file in empty_dirs]
                     if (len(delete_files)>0):
-                        print "Totally %s files will be deleted, and totally %s will be freed" % (len(delete_files), total_freed)
+                        print "Totally %s files will be deleted, and %s will be freed" % (len(delete_files), total_freed)
                     else:
-                        print "No files to delete found"
+                        pass
                 # DELETE NOW!
                 else:
                     for file in delete_files:
