@@ -1,18 +1,24 @@
-# about
-delete all orphaned files
+# About django-orphaned
+Django orphaned deletes every file in media subfolders not referenced anymore by a database entry.
+To make things short, it clears orphaned files from the filesystem.
 
-# setup
-install via easy_install or pip
+# Setup
+install the package via easy_install or pip
 
     easy_install django-orphaned
 
 with pip
 
     pip install django-orphaned
+    
+or
 
-add it to installed apps in django settings.py
+    pip install git+https://github.com/artscoop/django-orphaned --upgrade
+
+then add it to installed apps in django settings.py
 
     INSTALLED_APPS = (
+        ...
         'django_orphaned',
         ...
     )
@@ -33,7 +39,7 @@ the least to do is to run this command to show all orphaned files
 
     python manage.py deleteorphaned --info
 
-and to finally delete all orphaned files
+check the output satisfies your requirements then delete all orphaned files
 
     python manage.py deleteorphaned
 
